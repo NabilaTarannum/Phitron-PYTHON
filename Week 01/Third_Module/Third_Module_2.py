@@ -1,6 +1,4 @@
-'''
-Clean the data and get a string output 'a e i o u' 
-'''
+''' Clean the data and get a string output 'a e i o u' '''
 
 data = 'aNtEriOur\n\t>>'
 

@@ -1,7 +1,7 @@
 '''
 Game : Guess a number
 
-requirment -
+requirment -:
 * user instructions
 * delay
 

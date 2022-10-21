@@ -1,6 +1,4 @@
-'''
-Encrypt the following code so that no one can get your strategy.
-'''
+''' Encrypt the following code so that no one can get your strategy. '''
 
 # data = 'firebaby'
 
