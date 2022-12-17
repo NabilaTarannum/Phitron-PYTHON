@@ -21,7 +21,9 @@ class User:
 
         pwd_encrypted = hashlib.md5(password.encode()).hexdigest()
         already_exists = False
-        with open("users.txt", "r") as file:
+        with open(
+            "/workspaces/Phitron-PYTHON/Week 05/Sixteenth_Module/users.txt", "r"
+        ) as file:
             if email in file.read():
                 already_exists = True
                 # raise UserAlreadyExists(email)
@@ -119,21 +121,16 @@ rider1 = Rider("rider1", "rider1@gmail.com", "rider1", randint(0, 100), 5000)
 rider2 = Rider("rider2", "rider2@gmail.com", "rider2", randint(0, 100), 5000)
 rider3 = Rider("rider3", "rider3@gmail.com", "rider3", randint(0, 100), 5000)
 
-driver1 = Driver("driver1", "driver1@gmail.com", "driver1", randint(0, 30), 5645)
-driver1.take_driving_test()
-driver1.register_a_vehicle("car", 1245, 10)
-
-driver2 = Driver("driver2", "driver2@gmail.com", "driver2", randint(0, 30), 5645)
-driver2.take_driving_test()
-driver2.register_a_vehicle("car", 1245, 10)
-
-driver3 = Driver("driver3", "driver3@gmail.com", "driver3", randint(0, 30), 5645)
-driver3.take_driving_test()
-driver3.register_a_vehicle("car", 2145, 10)
-
-driver4 = Driver("driver4", "driver4@gmail.com", "driver4", randint(0, 30), 5645)
-driver4.take_driving_test()
-driver4.register_a_vehicle("car", 3245, 10)
+for i in range(1, 100):
+    driver1 = Driver(
+        f"driver {i}",
+        f"driver{i}@gmail.com",
+        f"driver{i}",
+        randint(0, 100),
+        randint(1000, 9999),
+    )
+    driver1.take_driving_test()
+    driver1.register_a_vehicle("car", randint(10000, 99999), 10)
 
 uber.find_a_vehicle(rider1, "car", 90)
 print(uber.get_available_car())
