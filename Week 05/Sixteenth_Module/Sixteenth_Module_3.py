@@ -96,8 +96,6 @@ class Driver(User):
             else:
                 new_vehicle = Cng(vehicle_type, license_plate, rate, self)
             uber.add_a_vehicle(vehicle_type, new_vehicle)
-        else:
-            print("Your are not a valid driver")
 
     def start_a_trip(self, destination, fare):
         self.earning += fare

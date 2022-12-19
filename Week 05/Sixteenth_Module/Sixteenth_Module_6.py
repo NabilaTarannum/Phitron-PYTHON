@@ -27,6 +27,7 @@ class RideManager:
                 if abs(rider.location - car.driver.location) < 10:
                     destination = abs(rider.location - destination)
                     fare = destination * car.rate
+                    if rider.balance < fare:
                     if car.status == "available":
                         car.status = "unavailable"
                         self.__available_cars.remove(car)
