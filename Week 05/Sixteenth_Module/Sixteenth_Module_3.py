@@ -21,9 +21,7 @@ class User:
 
         pwd_encrypted = hashlib.md5(password.encode()).hexdigest()
         already_exists = False
-        with open(
-            "/workspaces/Phitron-PYTHON/Week 05/Sixteenth_Module/users.txt", "r"
-        ) as file:
+        with open("Week 05/Sixteenth_Module/users.txt", "r") as file:
             if email in file.read():
                 already_exists = True
                 # raise UserAlreadyExists(email)
