@@ -28,6 +28,8 @@ class RideManager:
                     destination = abs(rider.location - destination)
                     fare = destination * car.rate
                     if rider.balance < fare:
+                        print('You do not have enough money for this ride')
+                        return False
                     if car.status == "available":
                         car.status = "unavailable"
                         self.__available_cars.remove(car)
