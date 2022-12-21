@@ -113,7 +113,7 @@ kuber.take_driving_test()
 result = license_authority.validate_license(kuber.email, kuber.license)
 print(result) """
 
-rider1 = Rider("rider1", "rider1@gmail.com", "rider1", randint(0, 100), 5000)
+rider1 = Rider("rider1", "rider1@gmail.com", "rider1", randint(0, 100), 1000)
 rider2 = Rider("rider2", "rider2@gmail.com", "rider2", randint(0, 100), 5000)
 rider3 = Rider("rider3", "rider3@gmail.com", "rider3", randint(0, 100), 5000)
 
@@ -129,4 +129,8 @@ for i in range(1, 100):
     driver1.register_a_vehicle("car", randint(10000, 99999), 10)
 
 print(uber.get_available_car())
+uber.find_a_vehicle(rider1, "car", randint(1, 100))
+uber.find_a_vehicle(rider1, "car", randint(1, 100))
+uber.find_a_vehicle(rider1, "car", randint(1, 100))
+uber.find_a_vehicle(rider1, "car", randint(1, 100))
 uber.find_a_vehicle(rider1, "car", randint(1, 100))
