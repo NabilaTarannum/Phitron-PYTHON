@@ -17,7 +17,7 @@ class RideManager:
         return self.__available_cars
 
     def find_a_vehicle(self, rider, vehical_type, destination):
-        print("looking for a cat")
+        print("looking for a car")
         if vehical_type == "car":
             if len(self.__available_cars) == 0:
                 print("sorry no cars is available")
@@ -28,12 +28,12 @@ class RideManager:
                     destination = abs(rider.location - destination)
                     fare = destination * car.rate
                     if rider.balance < fare:
-                        print('You do not have enough money for this ride')
+                        print("You do not have enough money for this trip.", fare, rider.balance)
                         return False
                     if car.status == "available":
                         car.status = "unavailable"
                         self.__available_cars.remove(car)
-                        print("find a vehicle for you", fare)
+                        print("find a vehicle for you for", fare)
                         return True
             print("looping done")
 

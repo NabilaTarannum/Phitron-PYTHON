@@ -128,5 +128,5 @@ for i in range(1, 100):
     driver1.take_driving_test()
     driver1.register_a_vehicle("car", randint(10000, 99999), 10)
 
-uber.find_a_vehicle(rider1, "car", 90)
 print(uber.get_available_car())
+uber.find_a_vehicle(rider1, "car", randint(1, 100))
