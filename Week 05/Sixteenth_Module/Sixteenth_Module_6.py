@@ -1,6 +1,7 @@
 class RideManager:
     def __init__(self) -> None:
         print("Ride manager activated")
+        self.__income = 0
         self.__available_cars = []
         self.__available_bikes = []
         self.__available_cngs = []
@@ -28,13 +29,19 @@ class RideManager:
                     destination = abs(rider.location - destination)
                     fare = destination * car.rate
                     if rider.balance < fare:
-                        print("You do not have enough money for this trip.", fare, rider.balance)
+                        print(
+                            "You do not have enough money for this trip.",
+                            fare,
+                            rider.balance,
+                        )
                         return False
                     if car.status == "available":
                         car.status = "unavailable"
                         self.__available_cars.remove(car)
                         rider.start_a_trip(fare)
-                        print("find a vehicle for you for", fare)
+                        car.driver.start_a_trip(destination, fare * 0.8)
+                        self.__income += fare * 0.2
+                        print(f"vehicle for {rider.name} for fare: {fare} with {car.driver.name}")
                         return True
             print("looping done")
 
