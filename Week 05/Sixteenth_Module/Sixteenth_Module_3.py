@@ -75,7 +75,7 @@ class Rider(User):
         return self.__trip_history
 
     def start_a_trip(self, fare, trip_info):
-        print(f'A trip started for {self.name}')
+        print(f"A trip started for {self.name}")
         self.balance -= fare
         self.__trip_history.append(trip_info)
 
