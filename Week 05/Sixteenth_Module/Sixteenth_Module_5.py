@@ -2,6 +2,7 @@
 
 
 from abc import ABC, abstractmethod
+import time
 
 
 class Vehicle(ABC):
@@ -31,6 +32,11 @@ class Car(Vehicle):
     def start_driving(self, start, destination):
         self.status = "unavailable"
         print(self.vehicle_type, self.license_plate, "started")
+        distance = abs(start - destination)
+        for i in range(distance):
+            time.sleep(0.5)
+            print(f"Driving: {self.license_plate} current position : {i} of {distance}")
+        self.trip_finished()
 
     def trip_finished(self):
         self.status = "available"

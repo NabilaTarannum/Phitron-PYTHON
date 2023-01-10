@@ -110,6 +110,7 @@ class Driver(User):
     def start_a_trip(self, start, destination, fare, trip_info):
         self.earning += fare
         self.location = destination
+        self.vehicle.start_driving(start, destination)
         self.__trip_history.append(trip_info)
 
 
