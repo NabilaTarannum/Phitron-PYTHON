@@ -1,7 +1,11 @@
+""" rider_manager.py """
+
+
 class RideManager:
     def __init__(self) -> None:
         print("Ride manager activated")
         self.__income = 0
+        self.__trip_history = []
         self.__available_cars = []
         self.__available_bikes = []
         self.__available_cngs = []
@@ -17,8 +21,13 @@ class RideManager:
     def get_available_car(self):
         return self.__available_cars
 
+    def total_income(self):
+        return self.__income
+
+    def trip_history(self):
+        return self.__trip_history
+
     def find_a_vehicle(self, rider, vehical_type, destination):
-        print("looking for a car")
         if vehical_type == "car":
             if len(self.__available_cars) == 0:
                 print("sorry no cars is available")
@@ -37,11 +46,13 @@ class RideManager:
                         return False
                     if car.status == "available":
                         car.status = "unavailable"
+                        trip_info = f"Vehicle for {rider.name} for fare: {fare} with {car.driver.name} started: {rider.location} to: {destination}"
                         self.__available_cars.remove(car)
-                        rider.start_a_trip(fare)
-                        car.driver.start_a_trip(destination, fare * 0.8)
+                        rider.start_a_trip(fare, trip_info)
+                        car.driver.start_a_trip(rider.location, destination, fare * 0.8, trip_info)
                         self.__income += fare * 0.2
-                        print(f"vehicle for {rider.name} for fare: {fare} with {car.driver.name}")
+                        self.__trip_history.append(trip_info)
+                        print(trip_info)
                         return True
             print("looping done")
 

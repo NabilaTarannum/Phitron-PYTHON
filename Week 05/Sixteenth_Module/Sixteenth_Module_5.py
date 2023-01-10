@@ -1,3 +1,6 @@
+""" vehicles.py """
+
+
 from abc import ABC, abstractmethod
 
 
@@ -25,7 +28,7 @@ class Car(Vehicle):
     def __init__(self, vehicle_type, license_plate, rate, driver) -> None:
         super().__init__(vehicle_type, license_plate, rate, driver)
 
-    def start_driving(self):
+    def start_driving(self, start, destination):
         self.status = "unavailable"
         print(self.vehicle_type, self.license_plate, "started")
 

@@ -1,3 +1,6 @@
+""" user.py """
+
+
 import hashlib
 from random import randint
 from Sixteenth_Module_4 import BRTA
@@ -57,6 +60,7 @@ class Rider(User):
         super().__init__(name, email, password)
         self.location = location
         self.balance = balance
+        self.__trip_history = []
 
     def set_location(self, location):
         self.location = location
@@ -67,17 +71,23 @@ class Rider(User):
     def request_trip(self, destination):
         pass
 
-    def start_a_trip(self, fare):
+    def get_trip_history(self):
+        return self.__trip_history
+
+    def start_a_trip(self, fare, trip_info):
         self.balance -= fare
+        self.__trip_history.append(trip_info)
 
 
 class Driver(User):
     def __init__(self, name, email, password, location, license) -> None:
         super().__init__(name, email, password)
         self.location = location
+        self.__trip_history = []
         self.license = license
         self.valid_driver = license_authority.validate_license(email, license)
         self.earning = 0
+        self.vehicle = None
 
     def take_driving_test(self):
         result = license_authority.take_driving_test(self.email)
@@ -90,16 +100,17 @@ class Driver(User):
     def register_a_vehicle(self, vehicle_type, license_plate, rate):
         if self.valid_driver is True:
             if vehicle_type == "car":
-                new_vehicle = Car(vehicle_type, license_plate, rate, self)
+                self.vehicle = Car(vehicle_type, license_plate, rate, self)
             elif vehicle_type == "bike":
-                new_vehicle = Bike(vehicle_type, license_plate, rate, self)
+                self.vehicle = Bike(vehicle_type, license_plate, rate, self)
             else:
-                new_vehicle = Cng(vehicle_type, license_plate, rate, self)
-            uber.add_a_vehicle(vehicle_type, new_vehicle)
+                self.vehicle = Cng(vehicle_type, license_plate, rate, self)
+            uber.add_a_vehicle(vehicle_type, self.vehicle)
 
-    def start_a_trip(self, destination, fare):
+    def start_a_trip(self, start, destination, fare, trip_info):
         self.earning += fare
         self.location = destination
+        self.__trip_history.append(trip_info)
 
 
 """ hero = User("Hero Alom", "hero@alom.com", "heroOhHero")
@@ -134,3 +145,6 @@ uber.find_a_vehicle(rider1, "car", randint(1, 100))
 uber.find_a_vehicle(rider1, "car", randint(1, 100))
 uber.find_a_vehicle(rider1, "car", randint(1, 100))
 uber.find_a_vehicle(rider1, "car", randint(1, 100))
+
+print(rider1.get_trip_history())
+print(uber.total_income())
