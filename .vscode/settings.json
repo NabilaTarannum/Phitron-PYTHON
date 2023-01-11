@@ -1,5 +1,4 @@
 {
   "editor.tabCompletion": "on",
-  "python.analysis.typeCheckingMode": "basic",
   "cppbuild.isEnabled": false
 }
