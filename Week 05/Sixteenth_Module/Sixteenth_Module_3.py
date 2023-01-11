@@ -2,6 +2,7 @@
 
 
 import hashlib
+import threading
 from random import randint
 from Sixteenth_Module_4 import BRTA
 from Sixteenth_Module_5 import Car, Bike, Cng
@@ -111,7 +112,9 @@ class Driver(User):
     def start_a_trip(self, start, destination, fare, trip_info):
         self.earning += fare
         self.location = destination
-        self.vehicle.start_driving(start, destination)
+        # start thread
+        trip_thread = threading.Thread(target=self.vehicle.start_driving)
+        # self.vehicle.start_driving(start, destination)
         self.__trip_history.append(trip_info)
 
 
