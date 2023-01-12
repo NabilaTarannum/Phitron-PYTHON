@@ -113,7 +113,8 @@ class Driver(User):
         self.earning += fare
         self.location = destination
         # start thread
-        trip_thread = threading.Thread(target=self.vehicle.start_driving)
+        trip_thread = threading.Thread(target=self.vehicle.start_driving, args=(start, destination,))
+        trip_thread.start()
         # self.vehicle.start_driving(start, destination)
         self.__trip_history.append(trip_info)
 
@@ -150,8 +151,8 @@ print(uber.get_available_car())
 uber.find_a_vehicle(rider1, "car", randint(1, 100))
 uber.find_a_vehicle(rider2, "car", randint(1, 100))
 uber.find_a_vehicle(rider3, "car", randint(1, 100))
-# uber.find_a_vehicle(rider4, "car", randint(1, 100))
-# uber.find_a_vehicle(rider5, "car", randint(1, 100))
+uber.find_a_vehicle(rider4, "car", randint(1, 100))
+uber.find_a_vehicle(rider5, "car", randint(1, 100))
 
 print(rider1.get_trip_history())
 print(uber.total_income())
