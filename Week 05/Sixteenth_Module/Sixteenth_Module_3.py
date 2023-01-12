@@ -3,7 +3,7 @@
 
 import hashlib
 import threading
-from random import randint
+from random import randint, choice
 from Sixteenth_Module_4 import BRTA
 from Sixteenth_Module_5 import Car, Bike, Cng
 from Sixteenth_Module_6 import uber
@@ -34,7 +34,7 @@ class User:
             with open("users.txt", "a") as file:
                 file.write(f"{email} {pwd_encrypted}\n")
             file.close()
-        print(self.name, "user created")
+        # print(self.name, "user created")
 
     @staticmethod
     def log_in(email, password):
@@ -94,7 +94,7 @@ class Driver(User):
     def take_driving_test(self):
         result = license_authority.take_driving_test(self.email)
         if result == False:
-            print("Sorry you failed, try again")
+            self.license = None
         else:
             self.license = result
             self.valid_driver = True
@@ -113,7 +113,13 @@ class Driver(User):
         self.earning += fare
         self.location = destination
         # start thread
-        trip_thread = threading.Thread(target=self.vehicle.start_driving, args=(start, destination,))
+        trip_thread = threading.Thread(
+            target=self.vehicle.start_driving,
+            args=(
+                start,
+                destination,
+            ),
+        )
         trip_thread.start()
         # self.vehicle.start_driving(start, destination)
         self.__trip_history.append(trip_info)
@@ -136,6 +142,8 @@ rider3 = Rider("rider3", "rider3@gmail.com", "rider3", randint(0, 100), 5000)
 rider4 = Rider("rider4", "rider4@gmail.com", "rider4", randint(0, 100), 5000)
 rider5 = Rider("rider5", "rider5@gmail.com", "rider5", randint(0, 100), 5000)
 
+vehicle_type = ["car", "bike", "cng"]
+
 for i in range(1, 100):
     driver1 = Driver(
         f"driver {i}",
@@ -145,14 +153,14 @@ for i in range(1, 100):
         randint(1000, 9999),
     )
     driver1.take_driving_test()
-    driver1.register_a_vehicle("car", randint(10000, 99999), 10)
+    driver1.register_a_vehicle(choice(vehicle_type), randint(10000, 99999), 10)
 
 print(uber.get_available_car())
-uber.find_a_vehicle(rider1, "car", randint(1, 100))
-uber.find_a_vehicle(rider2, "car", randint(1, 100))
-uber.find_a_vehicle(rider3, "car", randint(1, 100))
-uber.find_a_vehicle(rider4, "car", randint(1, 100))
-uber.find_a_vehicle(rider5, "car", randint(1, 100))
+uber.find_a_vehicle(rider1, choice(vehicle_type), randint(1, 100))
+uber.find_a_vehicle(rider2, choice(vehicle_type), randint(1, 100))
+uber.find_a_vehicle(rider3, choice(vehicle_type), randint(1, 100))
+uber.find_a_vehicle(rider4, choice(vehicle_type), randint(1, 100))
+uber.find_a_vehicle(rider5, choice(vehicle_type), randint(1, 100))
 
 print(rider1.get_trip_history())
 print(uber.total_income())
