@@ -1,5 +1,7 @@
 {
   "editor.tabCompletion": "on",
   "cppbuild.isEnabled": false,
-  "python.analysis.typeCheckingMode": "off"
+  "python.analysis.typeCheckingMode": "off",
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true
 }
