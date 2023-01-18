@@ -69,9 +69,6 @@ class Rider(User):
     def get_location(self):
         return self.location
 
-    def request_trip(self, destination):
-        pass
-
     def get_trip_history(self):
         return self.__trip_history
 
@@ -112,6 +109,7 @@ class Driver(User):
     def start_a_trip(self, start, destination, fare, trip_info):
         self.earning += fare
         self.location = destination
+        self.__trip_history.append(trip_info)
         # start thread
         trip_thread = threading.Thread(
             target=self.vehicle.start_driving,
@@ -122,7 +120,6 @@ class Driver(User):
         )
         trip_thread.start()
         # self.vehicle.start_driving(start, destination)
-        self.__trip_history.append(trip_info)
 
 
 """ hero = User("Hero Alom", "hero@alom.com", "heroOhHero")

@@ -35,7 +35,7 @@ class RideManager:
         else:
             vehicles = self.__available_cngs
         if len(vehicles) == 0:
-            print("sorry no cars is available")
+            print("sorry no {vehicle_type} is available")
             return False
         for vehicle in vehicles:
             # print("potential", rider.location, car.driver.location)
@@ -50,7 +50,6 @@ class RideManager:
                     )
                     return False
                 if vehicle.status == "available":
-                    vehicle.status = "unavailable"
                     trip_info = f"Match {vehicle_type} for {rider.name} for fare: {fare} with {vehicle.driver.name} started: {rider.location} to: {destination}"
                     print(trip_info)
                     vehicles.remove(vehicle)
