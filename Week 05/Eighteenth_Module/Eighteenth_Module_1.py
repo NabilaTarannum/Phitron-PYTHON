@@ -1,6 +1,6 @@
 """ Attributes Validation Using Assert """
 
-""" todo.txt ====>>
+""" todo.txt =====>>
 
 1. Attributes Validation Using Assert
 2. Dynamic Attributes
@@ -14,3 +14,7 @@ class Item:
     def __init__(self, itemName, itemPrice) -> None:
         self.itemName = itemName
         self.itemPrice = itemPrice
+
+
+item = Item("plate", 150)
+print(item.itemName, item.itemPrice)
