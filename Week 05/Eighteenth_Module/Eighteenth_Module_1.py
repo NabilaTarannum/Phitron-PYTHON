@@ -12,9 +12,10 @@
 
 class Item:
     def __init__(self, itemName, itemPrice) -> None:
+        assert itemPrice < 0
         self.itemName = itemName
         self.itemPrice = itemPrice
 
 
-item = Item("plate", 150)
+item = Item("Plate", -150)
 print(item.itemName, item.itemPrice)
