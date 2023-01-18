@@ -12,7 +12,7 @@
 
 class Item:
     def __init__(self, itemName, itemPrice) -> None:
-        assert itemPrice < 0
+        assert itemPrice >= 0
         self.itemName = itemName
         self.itemPrice = itemPrice
 
