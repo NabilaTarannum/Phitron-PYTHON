@@ -4,7 +4,7 @@
 
 1. Attributes Validation Using Assert
 2. Dynamic Attributes
-3. Create classes from json in files
+3. Create objects from json in files
 4. Multiply inheritance and MRO(Method Resolution Order) """
 
 """ validate.py =====>> """
