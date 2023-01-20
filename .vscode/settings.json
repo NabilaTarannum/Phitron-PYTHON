@@ -2,6 +2,6 @@
   "editor.tabCompletion": "on",
   "cppbuild.isEnabled": false,
   "python.analysis.typeCheckingMode": "off",
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "autopep8",
   "editor.formatOnSave": true
 }
