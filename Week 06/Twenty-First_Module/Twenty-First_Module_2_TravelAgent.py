@@ -4,7 +4,7 @@
 from logging import critical
 from Twentieth_Module_3_All_Airports import AllAirports
 from Twentieth_Module_8_Air_Lines import AirLines
-from Twenty_First_Module_1_Trip import Trip
+from Twenty_first_Module_1_Trip import Trip
 from itertools import permutations
 
 

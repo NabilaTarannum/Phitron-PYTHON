@@ -1,7 +1,7 @@
 """ main.py """
 
 
-from Twenty_First_Module_2_TravelAgent import TravelAgent
+from Twenty_first_Module_2_TravelAgent import TravelAgent
 
 
 def main():
